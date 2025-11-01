@@ -6,10 +6,10 @@ Sistema de navegação baseado em Grafos de Visibilidade e Árvores Geradoras M�
 - Jean Felipe Duarte Tenório 
 - Alison Bruno Martires Soares
 
-Instituição: UFAL
-Disciplina: Teoria dos Grafos
-Professor: Glauber Rodrigues Leite
-Data: Novembro/2025
+- Instituição: UFAL
+- Disciplina: Teoria dos Grafos
+- Professor: Glauber Rodrigues Leite
+- Data: Novembro/2025
 
 
 ## 📋 Descrição do Projeto
