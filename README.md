@@ -36,6 +36,8 @@ pip install -r requirements.txt
 ```
 
 ## 📁 Estrutura do Projeto
+
+````
 Caminho_Planejamento_Robo/
 ├── robot_navegation.py           ← Main(Arquivo Principal)
 ├── Docs/
@@ -62,7 +64,7 @@ Caminho_Planejamento_Robo/
 ├── README.md
 |── LICENSE
 └── requirements.txt
-
+```
 
 📄 Formato do Arquivo de Mapa
 ```
