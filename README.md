@@ -3,8 +3,8 @@ Sistema de navegação baseado em Grafos de Visibilidade e Árvores Geradoras M�
 
 ## 👥 Autores
 
-Jean Felipe Duarte Tenório 
-Alison Bruno Martires Soares
+- Jean Felipe Duarte Tenório 
+- Alison Bruno Martires Soares
 
 Instituição: UFAL
 Disciplina: Teoria dos Grafos
