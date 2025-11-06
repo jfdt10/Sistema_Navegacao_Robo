@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1000.0001"
+   height="1000.0001"
+   viewBox="0 0 264.58335 264.58335"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <rect
+       x="890.17407"
+       y="914.86078"
+       width="87.129601"
+       height="45.01696"
+       id="rect18" />
+    <rect
+       x="47.92128"
+       y="91.486076"
+       width="85.677437"
+       height="45.01696"
+       id="rect17" />
+  </defs>
+  <path
+     style="fill:#4d4d4d;stroke-width:0.264583"
+     id="path3"
+     d="M 160.60284,47.258731 134.09185,106.04398 75.306595,79.532987 101.81759,20.747734 Z"
+     transform="translate(2.305304,-11.52652)" />
+  <path
+     style="fill:#4d4d4d;stroke-width:0.264583"
+     id="path4"
+     d="m 209.06652,211.01095 -90.08749,6.52313 39.39455,-81.27962 z"
+     transform="matrix(-0.64176064,0.55514081,-0.54648287,-0.66488786,384.04848,207.41013)" />
+  <path
+     style="fill:#4d4d4d;stroke-width:0.264583"
+     id="path12"
+     d="M 54.918957,166.88672 38.414659,151.99861 6.406198,159.07465 -10.388702,129.52094 53.033427,92.295412 85.041888,132.13796 Z"
+     transform="translate(20.363518,50.716688)" />
+  <circle
+     style="fill:#ff0000;stroke-width:0.264583"
+     id="path13"
+     cx="9.6995821"
+     cy="10.608472"
+     r="4.0342817" />
+  <circle
+     style="fill:#ff0000;stroke-width:0.264583"
+     id="circle15"
+     r="4.0342817"
+     cy="230.76498"
+     cx="244.45634" />
+  <text
+     xml:space="preserve"
+     transform="matrix(0.26458333,0,0,0.26458333,-9.9896506,-7.6843466)"
+     id="text17"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:'Cambria Math';-inkscape-font-specification:'Cambria Math';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect17);fill:#000000"><tspan
+       x="47.921875"
+       y="120.37695"
+       id="tspan1">qstart</tspan></text>
+  <text
+     xml:space="preserve"
+     transform="matrix(0.26458333,0,0,0.26458333,-0.76843466,-4.2263902)"
+     id="text18"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:'Cambria Math';-inkscape-font-specification:'Cambria Math';text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect18);fill:#000000"><tspan
+       x="890.17383"
+       y="943.75195"
+       id="tspan2">qgoal</tspan></text>
+</svg>
