@@ -82,16 +82,18 @@ x1, y1
 ## 🔍 Resultados Visuais
 
 
-### 1. Mapa com Obstáculos
+### 1. Mapa com Obstáculos:
 
-![Mapa com Obstáculos](Resultados/mapa_plotado.png)
+<p align="center">
+  <img src="Caminho_Planejamento_Robo/Resultados/mapa_plotado.png" alt="Mapa com Obstáculos:" width="600"/>
+</p>
 
 
+### 2. Grafo de Visibilidade:
 
-### 2. Grafo de Visibilidade
-
-![Mapa com Visibilidade](Resultados/mapa_visibilidade.png)
-
+<p align="center">
+  <img src="Caminho_Planejamento_Robo/Resultados/mapa_visibilidade.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
+</p>
 
 
 ### 3. Árvore Geradora Mínima (Kruskal / Prim)
