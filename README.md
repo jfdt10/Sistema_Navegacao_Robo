@@ -84,11 +84,13 @@ x1, y1
 
 ### 1. Mapa com Obstáculos
 
+![Mapa com Obstáculos](Resultados/mapa_plotado.png)
 
 
 
 ### 2. Grafo de Visibilidade
 
+![Mapa com Visibilidade](Resultados/mapa_visibilidade.png)
 
 
 
