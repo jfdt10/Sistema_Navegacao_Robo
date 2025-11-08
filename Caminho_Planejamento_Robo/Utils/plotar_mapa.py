@@ -3,7 +3,7 @@ from matplotlib.patches import Polygon
 from pathlib import Path
 from Utils.file_reader import read_map_from_file
 
-def plot_map(map_obj, grafo=None, save_path=None):
+def plot_map(map_obj, grafo=None, mst_graph=None, path=None, save_path=None):
     fig, ax = plt.subplots()
     ax.set_aspect('equal')
 
@@ -19,8 +19,18 @@ def plot_map(map_obj, grafo=None, save_path=None):
     
     if grafo:
         for v1,v2,_ in grafo.get_edges():
-            ax.plot([v1.x, v2.x], [v1.y, v2.y], c="#FF6F00", linewidth=0.8, alpha=1.0, zorder=2)
+            ax.plot([v1.x, v2.x], [v1.y, v2.y], c="#FF6F00", linewidth=2.0, alpha=1.0, zorder=2)
 
+    if mst_graph:
+        for v1, v2, _ in mst_graph.get_edges():
+            ax.plot([v1.x, v2.x], [v1.y, v2.y], c="#0F15CA", linewidth=3.0, alpha=1.0, zorder=3)
+    
+    if path:
+        if len(path) >= 2:
+            xs = [p.x for p in path]
+            ys = [p.y for p in path]
+            ax.plot(xs, ys, c="#FF0000", linewidth=2.5, alpha=1.0, zorder=5)
+    
     ax.scatter([map_obj.q_start.x], [map_obj.q_start.y], c=point_color, s=60, zorder=4)
     ax.scatter([map_obj.q_goal.x], [map_obj.q_goal.y], c=point_color, s=60, zorder=4)
 
