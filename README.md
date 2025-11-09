@@ -98,14 +98,25 @@ x1, y1
 
 ### 3. Árvore Geradora Mínima (Kruskal / Prim)
 
-#### 3.1 Kruskal
+#### 3.1 Kruskal:
 
 <p align="center">
-  <img src="Caminho_Planejamento_Robo/Resultados/mapa_mst_visibilidade.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
+  <img src="Caminho_Planejamento_Robo/Resultados/mapa_mst_visibilidade_kruskal.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
+</p>
+
+#### 3.2 Prim:
+
+<p align="center">
+  <img src="Caminho_Planejamento_Robo/Resultados/mapa_mst_visibilidade_prim.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
 </p>
 
 
-### 4. Caminho Encontrado
+### 4. Caminho Encontrado:
+
+<p align="center">
+  <img src="Caminho_Planejamento_Robo/Resultados/mapa_caminho.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
+</p>
+
 
 
 
