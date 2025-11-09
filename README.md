@@ -21,7 +21,7 @@ Este projeto implementa um sistema completo de planejamento de caminho para veí
 
 
 
-## 🚀 Como Executar
+## 🚀 Como Executar:
 
 ### Pré-requisitos
 
@@ -35,7 +35,7 @@ python --version
 pip install -r requirements.txt
 ```
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura do Projeto:
 
 ```
 Caminho_Planejamento_Robo/
@@ -66,7 +66,7 @@ Caminho_Planejamento_Robo/
 └── requirements.txt
 ```
 
-📄 Formato do Arquivo de Mapa
+📄 Formato do Arquivo de Mapa:
 ```
 q_start_x, q_start_y          # Posição inicial
 q_goal_x, q_goal_y            # Posição final
@@ -79,7 +79,7 @@ x2, y2
 x1, y1
 ...
 ```
-## 🔍 Resultados Visuais
+## 🔍 Resultados Visuais:
 
 
 ### 1. Mapa com Obstáculos:
@@ -96,27 +96,16 @@ x1, y1
 </p>
 
 
-### 3. Árvore Geradora Mínima (Kruskal / Prim)
+### 3. Árvore Geradora Mínima (Kruskal / Prim):
 
-#### 3.1 Kruskal:
-
-<p align="center">
-  <img src="Caminho_Planejamento_Robo/Resultados/mapa_mst_visibilidade_kruskal.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
-</p>
-
-#### 3.2 Prim:
+#### 3.1 Kruskal
 
 <p align="center">
-  <img src="Caminho_Planejamento_Robo/Resultados/mapa_mst_visibilidade_prim.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
+  <img src="Caminho_Planejamento_Robo/Resultados/mapa_mst_visibilidade.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
 </p>
 
 
-### 4. Caminho Encontrado:
-
-<p align="center">
-  <img src="Caminho_Planejamento_Robo/Resultados/mapa_caminho.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
-</p>
-
+### 4. Caminho Encontrado
 
 
 
