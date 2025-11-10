@@ -146,74 +146,16 @@ x1, y1
   <img src="Caminho_Planejamento_Robo/Resultados/04_resultado_unificado_prim.png" alt="Mapa Caminho Encontrada na Árvore Geradora Mínima :" width="600"/>
 </p>
 
-## Algoritmos Implementados(Pseudocódigos):
+## Implementação dos Algoritmos
 
-### **Conceito: Dois vértices v_i e v_j têm uma aresta se:**
-- e_ij ≠ ∅ ⟺ s·v_i + (1-s)·v_j ∈ cl(Q_free), ∀s ∈ [0,1]
+### **Conceito Base: Visibilidade entre Vértices**
+Dois vértices v_i e v_j têm uma aresta se: **e_ij ≠ ∅ ⟺ s·v_i + (1-s)·v_j ∈ cl(Q_free), ∀s ∈ [0,1]**
 
-### 1. Grafo de Visibilidade:
+---
 
-```
-início [ dados: V (conjunto de vértices), O (conjunto de obstáculos) ]
+## Algoritmo de Prim (MST)
 
-  E ← ∅; 
-
-  para todo v_i ∈ V fazer
-  início
-    para todo v_j ∈ V tal que i < j fazer
-    início
-      
-      se TemVisibilidade(v_i, v_j, O) então
-      início
-        peso ← DistanciaEuclidiana(v_i, v_j);
-        E ← E ∪ (v_i, v_j, peso);
-      fim;
-      
-    fim;
-  fim;
-
-  retornar G = (V, E);
-fim.
-```
-
-```
-procedimento TemVisibilidade(p1, p2, Obstaculos)
-  início
-    Segmento ← (p1, p2); 
-    para todo Obj ∈ Obstaculos fazer
-    início
-      se Segmento intercepta interior(Obj) então
-      início
-        retornar falso;
-      fim;
-    fim;
-    
-    retornar verdadeiro;
-  fim.
-```
-
-### 2. Algoritmo de Kruskal/Prim:
-
-#### 2.1 Kruskal:
-
-```
-Início [ dados: grafo G = (V,E) valorado nas arestas ]
-para todo i de 1 a n fazer v(i) ← i; t ← 0; k ← 0; T ← ∅; [ T: arestas da árvore ]
-ordenar o conjunto de arestas em ordem não-decrescente;
-enquanto t < n - 1 fazer [ t: contador de arestas da árvore ]
-  início
-    k ← k + 1; [ k: contador de iterações ; u(k) = (i,j) aresta da vez ]
-    se v(i) ≠ v(j) então
-    início
-      para todo v(q) | v(q) = max [ v(i), v(j) ] fazer v(q) = min [ v(i), v(j) ]
-        T ← T ∪ (i,j); [ adiciona a aresta à árvore ]
-        t ← t + 1;
-    fim;
-   fim;
-fim.
-```
-#### 2.2 Prim:
-
+### Pseudocódigo Teórico:
 ```
 início [ dados: grafo G = (V,E) valorado nas arestas ] ; valor ← ∞; custo ← 0;
 T ← {1}; E(T) ← ∅; T e E(T): vértices e arestas da árvore ]
@@ -232,9 +174,45 @@ enquanto | T | < n – 1 fazer
 fim.
 ```
 
+### O que foi implementado (prim.py):
 
-### 3. Busca em Largura (BFS):
+**Estruturas de Dados Utilizadas:**
+- `in_mst`: conjunto (set) para armazenar vértices já incluídos na árvore (equivalente ao T do pseudocódigo)
+- `pq`: heap de prioridade (heapq) para armazenar arestas candidatas com seus pesos (tuplas: `(peso, origem, destino)`)
+- `mst_edges`: lista para armazenar as arestas que formam a MST final
 
+**Otimização Implementada:**
+
+Em vez de varrer todos os vértices a cada iteração (como no pseudocódigo original O(n²)), utilizamos um **heap de prioridade** que automaticamente mantém as arestas ordenadas por peso. Isso melhora a complexidade para **O(E log V)**.
+
+**Fluxo do Algoritmo:**
+
+1. **Inicialização:**
+   - Seleciona o primeiro vértice do grafo como ponto de partida (ou um vértice específico, se fornecido)
+   - Adiciona esse vértice ao conjunto `in_mst`
+   - Insere todas as arestas conectadas a esse vértice no heap
+
+2. **Loop Principal:**
+   - Enquanto houver arestas no heap e ainda existirem vértices não incluídos:
+     - Remove a aresta de **menor peso** do heap (`heapq.heappop`)
+     - Verifica se o vértice destino já está na MST (evita ciclos)
+     - Se não estiver, adiciona a aresta à MST e o vértice ao conjunto `in_mst`
+     - Insere todas as novas arestas do vértice recém-adicionado no heap
+
+3. **Construção do Grafo MST:**
+   - A função `build_mst_graph()` converte a lista de arestas em um dicionário de adjacências bidirecional
+   - Cada aresta (v1, v2, peso) gera duas entradas: `adj[v1][v2]` e `adj[v2][v1]`
+
+**Diferenças chave em relação ao pseudocódigo:**
+- Uso de heap ao invés de busca linear para encontrar a aresta de menor peso
+- Verificação explícita de ciclos com `if v2 in in_mst`
+- Acumulação do peso total da MST para estatísticas
+
+---
+
+## Busca em Largura - BFS (Pathfinding)
+
+### Pseudocódigo Teórico:
 ```
 início [ dados: grafo G = (V,E) e um vértice fonte s ∈ V ]
 
@@ -266,3 +244,55 @@ início [ dados: grafo G = (V,E) e um vértice fonte s ∈ V ]
 fim.
 ```
 
+### O que foi implementado (pathfinding.py):
+
+**Estruturas de Dados Utilizadas:**
+- `queue`: fila implementada com `deque` (double-ended queue) do módulo collections
+- `visited`: conjunto (set) para armazenar vértices já explorados (equivalente ao `explorado[]` do pseudocódigo)
+- `parent`: dicionário que mapeia cada vértice ao seu predecessor no caminho (usado para reconstruir o caminho final)
+
+**Funcionalidade `bfs_path(start, goal, mst_graph)`:**
+
+1. **Validações Iniciais:**
+   - Verifica se os vértices inicial e final existem no grafo
+   - Trata o caso especial onde início e fim são o mesmo vértice
+   - Retorna `None` se não houver caminho válido
+
+2. **Inicialização do BFS:**
+   - Adiciona o vértice inicial (`start`) à fila
+   - Marca o vértice inicial como visitado
+   - Define o pai do vértice inicial como `None` (não tem predecessor)
+
+3. **Exploração em Largura:**
+   - Remove o primeiro vértice da fila (`queue.popleft()`)
+   - Se for o vértice objetivo, reconstrói o caminho usando o dicionário `parent`
+   - Caso contrário, explora todos os vizinhos não visitados:
+     - Marca cada vizinho como visitado
+     - Registra o vértice atual como pai do vizinho
+     - Adiciona o vizinho à fila para exploração futura
+
+4. **Reconstrução do Caminho:**
+   - Ao encontrar o objetivo, percorre o dicionário `parent` de trás para frente
+   - Começa no `goal` e vai até o `start` (onde `parent[start] = None`)
+   - Inverte a lista para obter o caminho na ordem correta
+
+---
+
+## Função Auxiliar: `close_vertex`
+
+### O que foi implementado (pathfinding.py):
+
+**Funcionalidade `close_vertex(ponto, mst_graph)`:**
+
+Esta função não está presente no pseudocódigo teórico, mas é essencial para conectar a posição do robô (que pode estar em qualquer ponto do espaço livre) à MST construída.
+
+**Implementação:**
+- Recebe a posição atual do robô (um `Point`) e o grafo MST
+- Itera sobre todos os vértices do grafo
+- Calcula a distância euclidiana entre o ponto do robô e cada vértice
+- Retorna o vértice mais próximo (menor distância)
+
+**Utilidade no Sistema:**
+- Permite que o robô "se conecte" à MST a partir de qualquer posição
+- É chamada tanto para a posição inicial quanto para a posição final
+- Garante que sempre haja um ponto de entrada/saída válido na árvore geradora
