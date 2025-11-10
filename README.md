@@ -1,7 +1,7 @@
 # Planejamento de Caminho para Robôs Autônomos
 Sistema de navegação baseado em Grafos de Visibilidade e Árvores Geradoras Mínimas para planejamento de trajetórias em ambientes com obstáculos poligonais.
 
-## 👥 Autores
+## 👥 Autores:
 
 - Jean Felipe Duarte Tenório 
 - Alison Bruno Martires Soares
@@ -16,8 +16,8 @@ Sistema de navegação baseado em Grafos de Visibilidade e Árvores Geradoras M�
  Data: Novembro/2025
 
 
-## 📋 Descrição do Projeto
-Este projeto implementa um sistema completo de planejamento de caminho para veículos autônomos navegando em ambientes 2D com obstáculos. O sistema utiliza conceitos de teoria dos grafos para criar um roadmap que permite ao robô navegar de qualquer ponto a outro, evitando colisões
+## 📋 Descrição do Projeto:
+Este projeto implementa um sistema completo de planejamento de caminho para veículos autônomos navegando em ambientes 2D com obstáculos. O sistema utiliza conceitos de teoria dos grafos para criar um roadmap que permite ao robô navegar de qualquer ponto a outro, evitando colisões.
 
 
 
