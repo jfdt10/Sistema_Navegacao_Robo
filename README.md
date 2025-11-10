@@ -49,8 +49,6 @@ python robot_navegation.py
 ```
 Caminho_Planejamento_Robo/
 ├── robot_navegation.py           ← Main(Arquivo Principal)
-├── Docs/
-|   ├──Explicacao_Algoritmos.md   ← Arquivo que Explica e Compara Algoritmos com Pseudocódigo
 ├── Mapa/
 |   ├── bitmap.pdf
 |   ├── bitmap.png
@@ -150,6 +148,9 @@ x1, y1
 
 ### **Conceito Base: Visibilidade entre Vértices**
 Dois vértices v_i e v_j têm uma aresta se: **e_ij ≠ ∅ ⟺ s·v_i + (1-s)·v_j ∈ cl(Q_free), ∀s ∈ [0,1]**
+
+
+
 
 ---
 
