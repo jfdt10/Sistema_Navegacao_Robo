@@ -149,10 +149,181 @@ x1, y1
 ### **Conceito Base: Visibilidade entre Vértices**
 Dois vértices v_i e v_j têm uma aresta se: **e_ij ≠ ∅ ⟺ s·v_i + (1-s)·v_j ∈ cl(Q_free), ∀s ∈ [0,1]**
 
-
-
-
 ---
+
+### Algoritmo de Grafo de Visibilidade:
+
+### Pseudocódigo Teórico:
+
+```
+início [ dados: V (conjunto de vértices), O (conjunto de obstáculos) ]
+
+  E ← ∅; 
+
+  para todo v_i ∈ V fazer
+  início
+    para todo v_j ∈ V tal que i < j fazer
+    início
+      
+      se TemVisibilidade(v_i, v_j, O) então
+      início
+        peso ← DistanciaEuclidiana(v_i, v_j);
+        E ← E ∪ (v_i, v_j, peso);
+      fim;
+      
+    fim;
+  fim;
+
+  retornar G = (V, E);
+fim.
+```
+
+### O que foi implementado (visibility_graph.py):
+
+###  Estruturas de Dados Utilizadas
+
+- `VisibilityGraph`Classe principal que armazena o grafo de visibilidade.
+
+- Representação: dicionário de adjacências `self.adj`
+- Cada chave: um vértice (`Point`)
+- Cada valor: outro dicionário mapeando vértices vizinhos e pesos (distâncias)
+
+- `Point` Classe (importada de `Modulos.models`) que representa um ponto 2D:
+- Atributos: `x`, `y`
+- Método: `distance_to()` — calcula a distância euclidiana entre dois pontos
+
+- `LineString` Objeto da biblioteca **Shapely** usado para representar o **segmento de reta** entre dois pontos e detectar interseções com obstáculos.
+
+- `list` Usada para agregar todos os vértices (`all_vertices`) antes de verificar a visibilidade entre pares.
+
+**Fluxo do Algoritmo:**
+
+1. Inicializa um grafo vazio.
+2. Adiciona os vértices iniciais e finais (`q_start` e `q_goal`).
+3. Para cada obstáculo:
+   - Adiciona seus vértices ao grafo.
+   - Conecta vértices consecutivos (arestas que formam as bordas do obstáculo).
+4. Gera uma lista de **vértices únicos** (sem repetição).
+5. Para cada par de vértices distintos:
+   - Verifica se já existe uma aresta entre eles.
+   - Se não existir, chama `is_visible(v1, v2, obstacles)`.
+   - Caso haja visibilidade, adiciona a aresta com peso igual à distância euclidiana.
+6. Retorna o grafo completo.
+
+
+**Diferenças chave em relação ao pseudocódigo:**
+
+- Uso de **classes e estruturas de dados modernas** (`VisibilityGraph`, `Point`) em vez de conjuntos abstratos.  
+- Implementação da **verificação de visibilidade** com a biblioteca **Shapely**, garantindo interseção geométrica precisa.  
+- **Arestas dos obstáculos** são adicionadas explicitamente ao grafo, preservando sua geometria.  
+- Controle de **duplicatas de vértices e arestas** para evitar redundâncias.  
+- Inclusão de **tolerância numérica (1e-9)** para lidar com erros de ponto flutuante.  
+- Estrutura **modular** com funções independentes (`is_visible`, `build_visibility_graph`).  
+- Adição de **mensagens de log** para acompanhamento da execução.  
+- Retorno do grafo como **objeto estruturado (`VisibilityGraph`)**, e não apenas como um par `(V, E)`.  
+
+## Função Auxiliar: `is_visible`
+```
+procedimento TemVisibilidade(p1, p2, Obstaculos)
+  início
+    Segmento ← (p1, p2); 
+    para todo Obj ∈ Obstaculos fazer
+    início
+      se Segmento intercepta interior(Obj) então
+      início
+        retornar falso;
+      fim;
+    fim;
+    
+    retornar verdadeiro;
+  fim.
+```
+### O que foi implementado (em visibility_graph.py):
+
+**Funcionalidade `is_visible(p1,p2,obstacles)`:**
+
+- A função `is_visible` verifica se **dois pontos possuem linha de visada livre** entre si — ou seja, se o segmento de reta que conecta `p1` e `p2` não atravessa o interior de nenhum obstáculo.
+
+- Ela é essencial na construção do **grafo de visibilidade**, pois determina quais vértices podem ser conectados por arestas válidas no espaço livre \(Q_{free}\).
+
+**Implementação:**
+
+1. **Criação do Segmento:**  
+   Um segmento é criado entre os pontos `p1` e `p2` usando `LineString` (da biblioteca *Shapely*).
+
+2. **Verificação de Interseção:**  
+   Para cada obstáculo do ambiente:
+   - Calcula-se a interseção entre o segmento e o polígono do obstáculo.
+   - Se a interseção for **vazia**, o segmento não cruza o obstáculo.
+   - Se houver interseção, o tipo geométrico é analisado:
+     - **Ponto único:** é permitido se o ponto de interseção for exatamente um dos extremos (`p1` ou `p2`).
+     - **Múltiplos pontos ou segmentos:** indica cruzamento com o interior do obstáculo → **visibilidade bloqueada**.
+
+3. **Tolerância Numérica:**  
+   Pequenas diferenças numéricas são tratadas com uma margem de erro de `1e-9` para evitar falsos bloqueios em vértices coincidentes.
+
+4. **Resultado:**  
+   - Retorna `True` se o segmento estiver totalmente em região livre.  
+   - Retorna `False` se houver qualquer interseção indevida com os obstáculos.
+
+**Utilidade para o Grafo de Visibilidade:**
+- A função `is_visible` é extremamente importante e garante que apenas **arestas totalmente livres de colisões** sejam adicionadas ao grafo de visibilidade, assegurando que o caminho planejado permaneça dentro da área navegável.
+
+## Algoritmo de Kruskal(MST)
+
+### Pseudocódigo Teórico:
+
+```
+Início [ dados: grafo G = (V,E) valorado nas arestas ]
+para todo i de 1 a n fazer v(i) ← i; t ← 0; k ← 0; T ← ∅; [ T: arestas da árvore ]
+ordenar o conjunto de arestas em ordem não-decrescente;
+enquanto t < n - 1 fazer [ t: contador de arestas da árvore ]
+  início
+    k ← k + 1; [ k: contador de iterações ; u(k) = (i,j) aresta da vez ]
+    se v(i) ≠ v(j) então
+    início
+      para todo v(q) | v(q) = max [ v(i), v(j) ] fazer v(q) = min [ v(i), v(j) ]
+        T ← T ∪ (i,j); [ adiciona a aresta à árvore ]
+        t ← t + 1;
+    fim;
+   fim;
+fim.
+```
+
+### O que foi implementado (kruskal.py):
+
+###  Estruturas de Dados Utilizadas:
+
+- Lista de arestas como tuplas (u, v, peso).
+- Estrutura Union‑Find (Disjoint Set) com compressão de caminho e `rank` para união eficiente.
+- Resultado: lista de arestas da MST e custo total.
+
+**Fluxo do algoritmo na implementação:**
+1. Converter o grafo (vertices/arestas) em uma lista de arestas indexadas por inteiros.
+2. Ordenar a lista de arestas por peso (ordem não‑decrescente).
+3. Inicializar Union‑Find com n componentes.
+4. Iterar sobre as arestas ordenadas:
+   - Se find(u) != find(v): executar union(u, v) e adicionar a aresta à MST.
+   - Parar quando MST tiver n-1 arestas ou terminar a lista.
+5. Converter a lista de arestas da MST de índices de volta para os objetos Point e montar o dicionário de adjacência usado pelo restante do sistema.
+
+**Otimização Implementada:**
+- Ordenação: O(E log E)
+- Unions/Finds durante a varredura: O(E · alpha(V)) ≈ O(E)
+- Portanto: O(E log E) no geral.
+- O pseudocódigo que atualiza rótulos de componentes por varredura pode requerer atualizações em O(V) para cada aresta aceita → pior caso O(E·V).
+- Union‑Find elimina essas atualizações custosas, tornando o algoritmo escalável para grafos grandes.
+
+
+**Diferenças chave em relação ao pseudocódigo:**
+- O pseudocódigo usa um vetor de rótulos v(i) e faz atualizações em massa — abordagem correta, porém ineficiente para grafos grandes.
+- A implementação substitui os rótulos por Union‑Find, garantindo operações amortizadas quase constantes (find/union), reduzindo complexidade prática.
+- Complexidade prática:
+  - Pseudocódigo abordagem menos otimizada: até O(E·V) em pior caso ao atualizar rótulos.
+  - Implementação: O(E log E) para ordenar + quase O(1) amortizado por operação Union‑Find.
+- A conversão entre representação (Point -> índice) é feita antes da execução do Kruskal; após obter a MST por índices, o código reconstrói a estrutura de adjacência com objetos Point para integração com BFS e plotagem.
+
+
 
 ## Algoritmo de Prim (MST)
 
