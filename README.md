@@ -25,16 +25,23 @@ Este projeto implementa um sistema completo de planejamento de caminho para veí
 
 ### Pré-requisitos
 
-### Python 3.8 ou superior
+### Python 3.8 ou superior:
 ```
 python --version
 ```
-### Instalar dependências
+### Instalar dependências:
 
 ```
 pip install -r requirements.txt
 ```
+### Navegar para Pasta e Executar a Main:
 
+```
+cd Caminho_Planejamento_Robo
+
+python robot_navegation.py
+
+```
 ## 📁 Estrutura do Projeto:
 
 ```
