@@ -44,14 +44,6 @@ cd Caminho_Planejamento_Robo
 python robot_navegation.py
 
 ```
-### Navegar para Pasta e Executar a Main:
-
-```
-cd Caminho_Planejamento_Robo
-
-python robot_navegation.py
-
-```
 ## 📁 Estrutura do Projeto:
 
 ```
@@ -142,24 +134,24 @@ x1, y1
 
 ### 4. Caminho Encontrado:
 
-#### 4.1 Caminho Encontrado Resultado Kruskal
+#### 4.1 Caminho Encontrado Resultado Kruskal:
 
 <p align="center">
   <img src="Caminho_Planejamento_Robo/Resultados/04_resultado_unificado_kruskal.png" alt="Mapa Caminho Encontrada na Árvore Geradora Mínima :" width="600"/>
 </p>
 
-#### 4.1 Caminho Encontrado Resultado Prim
+#### 4.1 Caminho Encontrado Resultado Prim:
 
 <p align="center">
   <img src="Caminho_Planejamento_Robo/Resultados/04_resultado_unificado_prim.png" alt="Mapa Caminho Encontrada na Árvore Geradora Mínima :" width="600"/>
 </p>
 
-## Algoritmos Implementados(Pseudocódigos)
+## Algoritmos Implementados(Pseudocódigos):
 
 ### **Conceito: Dois vértices v_i e v_j têm uma aresta se:**
 - e_ij ≠ ∅ ⟺ s·v_i + (1-s)·v_j ∈ cl(Q_free), ∀s ∈ [0,1]
 
-### 1. Grafo de Visibilidade  
+### 1. Grafo de Visibilidade:
 
 ```
 início [ dados: V (conjunto de vértices), O (conjunto de obstáculos) ]
@@ -200,9 +192,9 @@ procedimento TemVisibilidade(p1, p2, Obstaculos)
   fim.
 ```
 
-### 2. Algoritmo de Kruskal/Prim
+### 2. Algoritmo de Kruskal/Prim:
 
-#### 2.1 Kruskal
+#### 2.1 Kruskal:
 
 ```
 Início [ dados: grafo G = (V,E) valorado nas arestas ]
@@ -220,7 +212,7 @@ enquanto t < n - 1 fazer [ t: contador de arestas da árvore ]
    fim;
 fim.
 ```
-#### 2.2 Prim
+#### 2.2 Prim:
 
 ```
 início [ dados: grafo G = (V,E) valorado nas arestas ] ; valor ← ∞; custo ← 0;
@@ -241,7 +233,7 @@ fim.
 ```
 
 
-### 3. Busca em Largura (BFS)
+### 3. Busca em Largura (BFS):
 
 ```
 início [ dados: grafo G = (V,E) e um vértice fonte s ∈ V ]
