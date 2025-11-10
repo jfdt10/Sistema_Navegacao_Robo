@@ -41,9 +41,9 @@ def plot_map(map_obj, grafo=None, mst_graph=None, path=None, save_path=None, num
             ax.plot(xs, ys, c="#FF0000", linewidth=3.0, alpha=1.0, zorder=5, marker='D', markersize=8)
     
     ax.scatter([map_obj.q_start.x], [map_obj.q_start.y], c=point_color, s=200, zorder=6, 
-               marker='*', edgecolors='darkred', linewidth=2)
+               marker='o', edgecolors='darkred', linewidth=2)
     ax.scatter([map_obj.q_goal.x], [map_obj.q_goal.y], c=point_color, s=200, zorder=6, 
-               marker='*', edgecolors='darkred', linewidth=2)
+               marker='o', edgecolors='darkred', linewidth=2)
 
     verts = [v for obs in map_obj.obstacles for v in obs.vertices]
     all_pts = verts + [map_obj.q_start, map_obj.q_goal]

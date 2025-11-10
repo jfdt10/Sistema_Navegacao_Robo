@@ -33,6 +33,16 @@ python --version
 
 ```
 pip install -r requirements.txt
+
+```
+
+### Navegar para Pasta e Executar a Main:
+
+```
+cd Caminho_Planejamento_Robo
+
+python robot_navegation.py
+
 ```
 ### Navegar para Pasta e Executar a Main:
 
@@ -50,7 +60,9 @@ Caminho_Planejamento_Robo/
 ├── Docs/
 |   ├──Explicacao_Algoritmos.md   ← Arquivo que Explica e Compara Algoritmos com Pseudocódigo
 ├── Mapa/
-|   ├── map1.png
+|   ├── bitmap.pdf
+|   ├── bitmap.png
+|   ├── bitmap.svg
 |   ├── map1.txt
 ├── Modulos/
 │   ├── __init__.py
@@ -59,15 +71,25 @@ Caminho_Planejamento_Robo/
 │   ├── kruskal.py                ← kruskal
 |   ├── prim.py                   ← prim               
 │   ├── pathfinding.py            ← BFS, vertice_mais_proximo
-│   └── visualization_map.py      ← Visualização do Mapa
 ├── Resultados/                   
-|   ├── result1.png
-├── Testes/                       ← Testes de Funcionalidades
-|   ├── test.py
+|   ├── 01_visibilidade.png
+|   ├── 02_mst_kruskal.png
+|   ├── 02_mst_prim.png
+|   ├── 03_caminho_kruskal.png
+|   ├── 03_caminho_prim.png
+|   ├── 04_resultado_unificado_kruskal.png
+|   ├── 04_resultado_unificado_prim.png
+|   ├── mapa_plotado.png
+├── Testes/                       
+|   ├── test.py ← Testes de Funcionalidades
 |
-├── Utils/                        ← Leitura do arquivo map1.txt
+├── Utils/                       
 │   ├── __init__.py
-│   └── file_reader.py   
+│   └── file_reader.py    ← Leitura do arquivo map1.txt
+│   └── plotar_caminho.py ← Plotagem caminho(Arquvo Excecução(Testes))
+│   └── plotar_mapa.py  ← Lógica Principal integra plotagem de mapa,grafos visibilidade,MST,caminho c
+│   └── plotar_mst.py   ← Plotagem Árvore Geradora Mínima(Arquivo Execução(Testes))
+│   └── plotar_visibilidade.py ← plotagem Grafo de Visibilidade(Arquivo Execução(Testes))
 ├── README.md
 |── LICENSE
 └── requirements.txt
@@ -99,7 +121,7 @@ x1, y1
 ### 2. Grafo de Visibilidade:
 
 <p align="center">
-  <img src="Caminho_Planejamento_Robo/Resultados/mapa_visibilidade.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
+  <img src="Caminho_Planejamento_Robo/Resultados/01_visibilidade.png" alt="Mapa Grafo de Visibilidade:" width="600"/>
 </p>
 
 
@@ -108,20 +130,28 @@ x1, y1
 #### 3.1 Kruskal:
 
 <p align="center">
-  <img src="Caminho_Planejamento_Robo/Resultados/mapa_mst_visibilidade_kruskal.png" alt="Mapa Árvore Geradora Mínima:" width="600"/>
+  <img src="Caminho_Planejamento_Robo/Resultados/02_mst_kruskal.png" alt="Mapa Árvore Geradora Mínima:" width="600"/>
 </p>
 
 #### 3.2 Prim:
 
 <p align="center">
-  <img src="Caminho_Planejamento_Robo/Resultados/mapa_mst_visibilidade_prim.png" alt="Mapa Árvore Geradora Mínima:" width="600"/>
+  <img src="Caminho_Planejamento_Robo/Resultados/02_mst_prim.png" alt="Mapa Árvore Geradora Mínima:" width="600"/>
 </p>
 
 
 ### 4. Caminho Encontrado:
 
+#### 4.1 Caminho Encontrado Resultado Kruskal
+
 <p align="center">
-  <img src="Caminho_Planejamento_Robo/Resultados/mapa_caminho.png" alt="Mapa Caminho Encontrada na Árvore Geradora Mínima :" width="600"/>
+  <img src="Caminho_Planejamento_Robo/Resultados/04_resultado_unificado_kruskal.png" alt="Mapa Caminho Encontrada na Árvore Geradora Mínima :" width="600"/>
+</p>
+
+#### 4.1 Caminho Encontrado Resultado Prim
+
+<p align="center">
+  <img src="Caminho_Planejamento_Robo/Resultados/04_resultado_unificado_prim.png" alt="Mapa Caminho Encontrada na Árvore Geradora Mínima :" width="600"/>
 </p>
 
 ## Algoritmos Implementados(Pseudocódigos)

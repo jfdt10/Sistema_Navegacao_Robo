@@ -13,7 +13,7 @@ def print_main_menu():
     print("1. Carregar mapa e construir Grafo de Visibilidade")
     print("2. Construir Arvore Geradora Minima (MST)")
     print("3. Buscar caminho na MST")
-    print("4. Encontrar vertice mais proximo")
+    print("4. Encontrar vertice mais proximo na Árvore Geradora Minima (MST)")
     print("5. Plotar resultado final (unificado)")
     print("6. Limpar dados")
     print("7. Sair")
