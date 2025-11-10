@@ -56,8 +56,8 @@ if __name__ == "__main__":
         print(f"\n MST gerada com {algo_name}!")
         print(f"Vertices na MST: {num_vertices}")
         print(f"Arestas na MST: {num_edges}")
-        print(f"Custo total (distância): {cost}")
+        print(f"Custo total (distância): {cost:.2f}")
         print(f"MST é árvore (E == V-1): {num_edges == max(0, num_vertices-1)}")
 
-        plot_map(mapa, grafo=grafo, mst_graph=mst_graph, save_path="mapa_mst_prim.png")
+        plot_map(mapa, grafo=grafo, mst_graph=mst_graph, save_path="mapa_mst.png",num_vertices=num_vertices,num_edges=num_edges,cost=cost,algo_name=algo_name)
         print(f"Gráfico salvo em mapa_mst_prim.png")

@@ -31,6 +31,7 @@ if __name__ == "__main__":
             print(f"Custo do caminho: {path_cost:.2f}")
         else:
             print("Nenhum caminho encontrado entre q_start e q_goal")
+            path_cost = None
 
-        plot_map(mapa, grafo=grafo, mst_graph=mst_graph, path=path, save_path="mapa_caminho.png")
+        plot_map(mapa, grafo=grafo, mst_graph=mst_graph, path=path, save_path="mapa_caminho.png",num_vertices=num_vertices,num_edges=num_edges,cost=cost,path_cost=path_cost,algo_name=algo_name)
         print(f"Gráfico salvo em mapa_caminho.png")
