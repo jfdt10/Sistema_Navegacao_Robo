@@ -274,5 +274,3 @@ início [ dados: grafo G = (V,E) e um vértice fonte s ∈ V ]
 fim.
 ```
 
-
-
